@@ -1011,17 +1011,3 @@ textarea#comment::placeholder {
     color: #ffffff;
 }
 
-.tabla {
-    display: block;
-    /* width: 100%; */
-    padding: 0px 15px 10px 0px;
-    font-size: 18px;
-    /* line-height: 1.5; */
-    color: #000000;
-    background-color: transparent;
-    /* background-clip: padding-box; */
-    border-bottom: 1px solid #000000 !important;
-    border-radius: 0px;
-    /* transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out; */
-    border: 0px;
-}

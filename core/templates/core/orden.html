@@ -1,4 +1,3 @@
-
 {% extends 'core/base.html' %}
 {% load static %}
 
@@ -37,6 +36,21 @@
 
     .table tfoot td {
         font-weight: bold;
+    }
+
+    tabla {
+        display: block;
+        /* width: 100%; */
+        padding: 0px 15px 10px 0px;
+        font-size: 18px;
+        /* line-height: 1.5; */
+        color: #000000;
+        background-color: transparent;
+        /* background-clip: padding-box; */
+        border-bottom: 1px solid #000000 !important;
+        border-radius: 0px;
+        /* transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out; */
+        border: 0px;
     }
 </style>
 {% endblock %}
@@ -150,7 +164,6 @@
                         <td><input type="text" class="tabla" name="codigo_producto"></td>
                         <td><input type="text" class="tabla" name="nombre_producto"></td>
                         <td><input type="number" class="tabla" name="cantidad" onchange="calculateTotal(this)"></td>
-
                         <td><input type="number" class="tabla" name="precio_unitario" onchange="calculateTotal(this)">
                         </td>
                         <td><input type="number" class="tabla" name="valor_total" readonly></td>
@@ -159,7 +172,6 @@
                         <td><input type="text" class="tabla" name="codigo_producto"></td>
                         <td><input type="text" class="tabla" name="nombre_producto"></td>
                         <td><input type="number" class="tabla" name="cantidad" onchange="calculateTotal(this)"></td>
-
                         <td><input type="number" class="tabla" name="precio_unitario" onchange="calculateTotal(this)">
                         </td>
                         <td><input type="number" class="tabla" name="valor_total" readonly></td>
@@ -168,7 +180,6 @@
                         <td><input type="text" class="tabla" name="codigo_producto"></td>
                         <td><input type="text" class="tabla" name="nombre_producto"></td>
                         <td><input type="number" class="tabla" name="cantidad" onchange="calculateTotal(this)"></td>
-
                         <td><input type="number" class="tabla" name="precio_unitario" onchange="calculateTotal(this)">
                         </td>
                         <td><input type="number" class="tabla" name="valor_total" readonly></td>
@@ -177,7 +188,6 @@
                         <td><input type="text" class="tabla" name="codigo_producto"></td>
                         <td><input type="text" class="tabla" name="nombre_producto"></td>
                         <td><input type="number" class="tabla" name="cantidad" onchange="calculateTotal(this)"></td>
-
                         <td><input type="number" class="tabla" name="precio_unitario" onchange="calculateTotal(this)">
                         </td>
                         <td><input type="number" class="tabla" name="valor_total" readonly></td>
@@ -186,7 +196,6 @@
                         <td><input type="text" class="tabla" name="codigo_producto"></td>
                         <td><input type="text" class="tabla" name="nombre_producto"></td>
                         <td><input type="number" class="tabla" name="cantidad" onchange="calculateTotal(this)"></td>
-
                         <td><input type="number" class="tabla" name="precio_unitario" onchange="calculateTotal(this)">
                         </td>
                         <td><input type="number" class="tabla" name="valor_total" readonly></td>
@@ -195,7 +204,6 @@
                         <td><input type="text" class="tabla" name="codigo_producto"></td>
                         <td><input type="text" class="tabla" name="nombre_producto"></td>
                         <td><input type="number" class="tabla" name="cantidad" onchange="calculateTotal(this)"></td>
-
                         <td><input type="number" class="tabla" name="precio_unitario" onchange="calculateTotal(this)">
                         </td>
                         <td><input type="number" class="tabla" name="valor_total" readonly></td>
@@ -204,14 +212,13 @@
                         <td><input type="text" class="tabla" name="codigo_producto"></td>
                         <td><input type="text" class="tabla" name="nombre_producto"></td>
                         <td><input type="number" class="tabla" name="cantidad" onchange="calculateTotal(this)"></td>
-
                         <td><input type="number" class="tabla" name="precio_unitario" onchange="calculateTotal(this)">
                         </td>
                         <td><input type="number" class="tabla" name="valor_total" readonly></td>
                     </tr>
                 </tbody>
-            </table>
 
+            </table>
             <div class="resumen">
                 <div class="iva">
                     <span class="titulo">IVA (19%):</span>
@@ -229,9 +236,10 @@
             {% endfor %}
             <form method="post">
                 {% csrf_token %}
-                <button type="submit" class="btn btn-primary mt-3">Guardar</button>
+                <button type="submit" class="btn btn-primary mt-3">Crear orden</button>
             </form>
         </div>
+
     </div>
 </div>
 
