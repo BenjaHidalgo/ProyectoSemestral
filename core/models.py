@@ -1,4 +1,4 @@
-from django.db import models
+from django.db import models 
 
 
 class Empresa(models.Model):
@@ -22,15 +22,25 @@ class Cliente(models.Model):
 
     def __str__(self):
         return self.nombre_razon_social
+    
+class Producto(models.Model):
+    codigo_producto = models.CharField(max_length=200)
+    nombre_producto = models.CharField(max_length=200)
+    cantidad = models.IntegerField()
+    precio_unitario = models.DecimalField(max_digits=5, decimal_places=2)
 
 class Orden(models.Model):
     numero_orden = models.CharField(max_length=10)
     fecha_orden = models.DateField()
     empresa = models.ForeignKey(Empresa, on_delete=models.CASCADE)
     cliente = models.ForeignKey(Cliente, on_delete=models.CASCADE)
+    productos = models.ForeignKey(Producto, on_delete=models.CASCADE)
+
 
     def __str__(self):
         return self.numero_orden
     
 
     
+   
+
