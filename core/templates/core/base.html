@@ -11,7 +11,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1">
     <!-- site metas -->
-    <title>Vintage Fur</title>
+    <title>NovaTech</title>
     <meta name="keywords" content="">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -41,19 +41,19 @@
     <nav class="navbar navbar-expand-lg fixed-top bg-primary navbar-light">
         <div class="container">
             <a class="navbar-brand" href="#">
-                <img id="MDB-logo" src="https://mdbcdn.b-cdn.net/wp-content/uploads/2018/06/logo-mdb-jquery-small.png" alt="MDB Logo" draggable="false" height="30">
+                <img id="NovaTech-logo" src="{% static 'core/img/NOVATECH.png' %}" alt="MDB Logo" draggable="false" height="30">
             </a>
             <button class="navbar-toggler" type="button" data-mdb-toggle="collapse" data-mdb-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <i class="fas fa-bars"></i>
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ms-auto align-items-center">
-                    <li class="nav-item">
-                        <a class="nav-link mx-2" href="{% url 'index'%}"><i class="fas fa-plus-circle pe-2"></i>Home</a>
+                    <li class="nav-item ms-3">
+                        <a class="nav-link mx-1" href="{% url 'index' %}">Inicio</a>
                     </li>
                     
                     <li class="nav-item ms-3">
-                        <a class="btn btn-black btn-rounded" href="{% url 'login'%}">Sign in</a>
+                        <a class="btn btn-black btn-rounded" href="{% url 'login' %}">Ingresar</a>
                     </li>
                 </ul>
             </div>
@@ -91,12 +91,7 @@
                     <p class="footer_lorem_text">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable.</p>
                 </div>
             </div>
-            <div class="input-group mb-3">
-                <input type="text" class="form-control" placeholder="Enter your email" aria-label="Enter your email" aria-describedby="basic-addon2">
-                <div class="input-group-append">
-                    <span class="input-group-text" id="basic-addon2"><a href="#">Subscribe</a></span>
-                </div>
-            </div>
+            
         </div>
     </div>
     <!-- footer section end -->
