@@ -21,20 +21,21 @@
                   <div class="icon_1"><img src="{% static 'core/img/VerOrden.png' %}"></div>
                   <h2 class="furnitures_text">Ver ordenes de compra</h2>
                   <div class="read_bt_main mt-auto">
-                      <div class="read_bt"><a href="#">Ver</a></div>
+                      <div class="read_bt"><a href="#">Ver</a></div> #Colocar la url que lista ordenes
                   </div>
               </div>
               <div class="col-lg-3 col-sm-6 d-flex flex-column">
                   <div class="icon_1"><img src="{% static 'core/img/CrearOrden.png' %}"></div>
                   <h2 class="furnitures_text">Crear orden de compra</h2>
                   <div class="read_bt_main mt-auto">
-                      <div class="read_bt"><a href="#">Crear</a></div>
+                      <div class="read_bt"><a href="{% url 'orden' %}">Crear</a></div> 
                   </div>
               </div>
           </div>
       </div>
    </div>
 </div>
+
 
 
 {% endblock %}
