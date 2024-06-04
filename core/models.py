@@ -27,14 +27,14 @@ class Producto(models.Model):
     codigo_producto = models.CharField(max_length=200)
     nombre_producto = models.CharField(max_length=200)
     cantidad = models.IntegerField()
-    precio_unitario = models.DecimalField(max_digits=5, decimal_places=2)
+    precio_unitario = models.IntegerField()
 
 class Orden(models.Model):
     numero_orden = models.CharField(max_length=10)
     fecha_orden = models.DateField()
     empresa = models.ForeignKey(Empresa, on_delete=models.CASCADE)
     cliente = models.ForeignKey(Cliente, on_delete=models.CASCADE)
-    productos = models.ForeignKey(Producto, on_delete=models.CASCADE)
+    productos = models.ForeignKey(Producto, on_delete=models.CASCADE, null=True)
 
 
     def __str__(self):

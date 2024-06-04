@@ -37,21 +37,6 @@
     .table tfoot td {
         font-weight: bold;
     }
-
-    tabla {
-        display: block;
-        /* width: 100%; */
-        padding: 0px 15px 10px 0px;
-        font-size: 18px;
-        /* line-height: 1.5; */
-        color: #000000;
-        background-color: transparent;
-        /* background-clip: padding-box; */
-        border-bottom: 1px solid #000000 !important;
-        border-radius: 0px;
-        /* transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out; */
-        border: 0px;
-    }
 </style>
 {% endblock %}
 
@@ -75,40 +60,37 @@
                     </div>
                 </div>
             </div>
+
             <h2 class="form-section-title">Datos de la Empresa</h2>
+            {% for aux in listado %}
             <div class="row">
                 <div class="col-md-6">
                     <div class="form-group">
-                        {{ empresa_form.rut.label_tag }}
-                        {{ empresa_form.rut }}
+                     <h5 class="text-black mb-0">Rut empresa: {{ aux.rut }}</h5>
+                        
                     </div>
                     <div class="form-group">
-                        {{ empresa_form.razon_social.label_tag }}
-                        {{ empresa_form.razon_social }}
+                        <h5 class="text-black mb-0">Razon social: {{ aux.razon_social }}</h5>
                     </div>
                     <div class="form-group">
-                        {{ empresa_form.direccion.label_tag }}
-                        {{ empresa_form.direccion }}
+                        <h5 class="text-black mb-0">Direccion: {{ aux.direccion }}</h5>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
-                        {{ empresa_form.telefono.label_tag }}
-                        {{ empresa_form.telefono }}
+                        <h5 class="text-black mb-0">Telefono: {{ aux.telefono }}</h5>
                     </div>
                     <div class="form-group">
-                        {{ empresa_form.correo.label_tag }}
-                        {{ empresa_form.correo }}
+                        <h5 class="text-black mb-0">Correo: {{ aux.correo }}</h5>
                     </div>
                     <div class="form-group">
-                        {{ empresa_form.sitio_web.label_tag }}
-                        {{ empresa_form.sitio_web }}
+                        <h5 class="text-black mb-0">Sitio Web: {{ aux.sitio_web }}</h5>
                     </div>
                     <div class="form-group">
-                        {{ empresa_form.tipo_servicio.label_tag }}
-                        {{ empresa_form.tipo_servicio }}
+                        <h5 class="text-black mb-0">Tipo Servicio: {{ aux.tipo_servicio }}</h5>
                     </div>
                 </div>
+                {% endfor %}
             </div>
             <h2 class="form-section-title">Datos del Cliente</h2>
             <div class="form-group">
@@ -122,6 +104,7 @@
 
             <div class="form-group">
                 {{ cliente_form.nombre_razon_social.label_tag }}
+                
                 {{ cliente_form.nombre_razon_social }}
             </div>
             <div class="form-group">
@@ -138,108 +121,106 @@
             </div>
 
         </form>
+        <form method="post">
+            {% csrf_token %}
+            <div class="table-container">
+                <h2 class="form-section-title">Detalles del Producto</h2>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Código del Producto</th>
+                            <th>Nombre del Producto</th>
+                            <th>Cantidad</th>
+                            <th>Precio Unitario</th>
+                            <th>Valor Total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><input type="text" name="codigo_producto"></td>
+                            <td><input type="text" name="nombre_producto"></td>
+                            <td><input type="number" name="cantidad" onchange="calculateTotal(this)"></td>
+                            <td><input type="number" name="precio_unitario" onchange="calculateTotal(this)">
+                            </td>
+                            <td><input type="number" name="valor_total" readonly></td>
+                        </tr>
+                        <tr>
+                            <td><input type="text" name="codigo_producto"></td>
+                            <td><input type="text" name="nombre_producto"></td>
+                            <td><input type="number" name="cantidad" onchange="calculateTotal(this)"></td>
+                            <td><input type="number" name="precio_unitario" onchange="calculateTotal(this)">
+                            </td>
+                            <td><input type="number" name="valor_total" readonly></td>
+                        </tr>
+                        <tr>
+                            <td><input type="text" name="codigo_producto"></td>
+                            <td><input type="text" name="nombre_producto"></td>
+                            <td><input type="number" name="cantidad" onchange="calculateTotal(this)"></td>
+                            <td><input type="number" name="precio_unitario" onchange="calculateTotal(this)">
+                            </td>
+                            <td><input type="number" name="valor_total" readonly></td>
+                        </tr>
+                        <tr>
+                            <td><input type="text" name="codigo_producto"></td>
+                            <td><input type="text" name="nombre_producto"></td>
+                            <td><input type="number" name="cantidad" onchange="calculateTotal(this)"></td>
+                            <td><input type="number" name="precio_unitario" onchange="calculateTotal(this)">
+                            </td>
+                            <td><input type="number" name="valor_total" readonly></td>
+                        </tr>
+                        <tr>
+                            <td><input type="text" name="codigo_producto"></td>
+                            <td><input type="text" name="nombre_producto"></td>
+                            <td><input type="number" name="cantidad" onchange="calculateTotal(this)"></td>
+                            <td><input type="number" name="precio_unitario" onchange="calculateTotal(this)">
+                            </td>
+                            <td><input type="number" name="valor_total" readonly></td>
+                        </tr>
+                        <tr>
+                            <td><input type="text" name="codigo_producto"></td>
+                            <td><input type="text" name="nombre_producto"></td>
+                            <td><input type="number" name="cantidad" onchange="calculateTotal(this)"></td>
+                            <td><input type="number" name="precio_unitario" onchange="calculateTotal(this)">
+                            </td>
+                            <td><input type="number" name="valor_total" readonly></td>
+                        </tr>
+                        <tr>
+                            <td><input type="text" name="codigo_producto"></td>
+                            <td><input type="text" name="nombre_producto"></td>
+                            <td><input type="number" name="cantidad" onchange="calculateTotal(this)"></td>
+                            <td><input type="number" name="precio_unitario" onchange="calculateTotal(this)">
+                            </td>
+                            <td><input type="number" name="valor_total" readonly></td>
+                        </tr>
+                        <tr>
+                            <td><input type="text" name="codigo_producto"></td>
+                            <td><input type="text" name="nombre_producto"></td>
+                            <td><input type="number" name="cantidad" onchange="calculateTotal(this)"></td>
+                            <td><input type="number" name="precio_unitario" onchange="calculateTotal(this)">
+                            </td>
+                            <td><input type="number" name="valor_total" readonly></td>
+                        </tr>
+                    </tbody>
 
-        <div class="table-container">
-            <h2 class="form-section-title">Detalles del Producto</h2>
-            <table class="table table-striped">
-                <thead>
-                    <tr>
-                        <th>Código del Producto</th>
-                        <th>Nombre del Producto</th>
-                        <th>Cantidad</th>
-                        <th>Precio Unitario</th>
-                        <th>Valor Total</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><input type="text" class="tabla" name="codigo_producto"></td>
-                        <td><input type="text" class="tabla" name="nombre_producto"></td>
-                        <td><input type="number" class="tabla" name="cantidad" onchange="calculateTotal(this)"></td>
-                        <td><input type="number" class="tabla" name="precio_unitario" onchange="calculateTotal(this)">
-                        </td>
-                        <td><input type="number" class="tabla" name="valor_total" readonly></td>
-                    </tr>
-                    <tr>
-                        <td><input type="text" class="tabla" name="codigo_producto"></td>
-                        <td><input type="text" class="tabla" name="nombre_producto"></td>
-                        <td><input type="number" class="tabla" name="cantidad" onchange="calculateTotal(this)"></td>
-                        <td><input type="number" class="tabla" name="precio_unitario" onchange="calculateTotal(this)">
-                        </td>
-                        <td><input type="number" class="tabla" name="valor_total" readonly></td>
-                    </tr>
-                    <tr>
-                        <td><input type="text" class="tabla" name="codigo_producto"></td>
-                        <td><input type="text" class="tabla" name="nombre_producto"></td>
-                        <td><input type="number" class="tabla" name="cantidad" onchange="calculateTotal(this)"></td>
-                        <td><input type="number" class="tabla" name="precio_unitario" onchange="calculateTotal(this)">
-                        </td>
-                        <td><input type="number" class="tabla" name="valor_total" readonly></td>
-                    </tr>
-                    <tr>
-                        <td><input type="text" class="tabla" name="codigo_producto"></td>
-                        <td><input type="text" class="tabla" name="nombre_producto"></td>
-                        <td><input type="number" class="tabla" name="cantidad" onchange="calculateTotal(this)"></td>
-                        <td><input type="number" class="tabla" name="precio_unitario" onchange="calculateTotal(this)">
-                        </td>
-                        <td><input type="number" class="tabla" name="valor_total" readonly></td>
-                    </tr>
-                    <tr>
-                        <td><input type="text" class="tabla" name="codigo_producto"></td>
-                        <td><input type="text" class="tabla" name="nombre_producto"></td>
-                        <td><input type="number" class="tabla" name="cantidad" onchange="calculateTotal(this)"></td>
-                        <td><input type="number" class="tabla" name="precio_unitario" onchange="calculateTotal(this)">
-                        </td>
-                        <td><input type="number" class="tabla" name="valor_total" readonly></td>
-                    </tr>
-                    <tr>
-                        <td><input type="text" class="tabla" name="codigo_producto"></td>
-                        <td><input type="text" class="tabla" name="nombre_producto"></td>
-                        <td><input type="number" class="tabla" name="cantidad" onchange="calculateTotal(this)"></td>
-                        <td><input type="number" class="tabla" name="precio_unitario" onchange="calculateTotal(this)">
-                        </td>
-                        <td><input type="number" class="tabla" name="valor_total" readonly></td>
-                    </tr>
-                    <tr>
-                        <td><input type="text" class="tabla" name="codigo_producto"></td>
-                        <td><input type="text" class="tabla" name="nombre_producto"></td>
-                        <td><input type="number" class="tabla" name="cantidad" onchange="calculateTotal(this)"></td>
-                        <td><input type="number" class="tabla" name="precio_unitario" onchange="calculateTotal(this)">
-                        </td>
-                        <td><input type="number" class="tabla" name="valor_total" readonly></td>
-                    </tr>
-                    <tr>
-                        <td><input type="text" class="tabla" name="codigo_producto"></td>
-                        <td><input type="text" class="tabla" name="nombre_producto"></td>
-                        <td><input type="number" class="tabla" name="cantidad" onchange="calculateTotal(this)"></td>
-                        <td><input type="number" class="tabla" name="precio_unitario" onchange="calculateTotal(this)">
-                        </td>
-                        <td><input type="number" class="tabla" name="valor_total" readonly></td>
-                    </tr>
-                </tbody>
-
-            </table>
-            <div class="resumen">
-                <div class="iva">
-                    <span class="titulo">IVA (19%):</span>
-                    <span class="valor" id="iva"></span>
+                </table>
+                <div class="resumen">
+                    <div class="iva">
+                        <span class="titulo">IVA (19%):</span>
+                        <span class="valor" id="iva"></span>
+                    </div>
+                    <div class="total">
+                        <span class="titulo">Total:</span>
+                        <span class="valor" id="total"></span>
+                    </div>
                 </div>
-                <div class="total">
-                    <span class="titulo">Total:</span>
-                    <span class="valor" id="total"></span>
+                {% for message in messages %}
+                <div class="{{ message.tags }}">
+                    {{ message }}
                 </div>
-            </div>
-            {% for message in messages %}
-            <div class="{{ message.tags }}">
-                {{ message }}
-            </div>
-            {% endfor %}
-            <form method="post">
-                {% csrf_token %}
+                {% endfor %}
                 <button type="submit" class="btn btn-primary mt-3">Crear orden</button>
-            </form>
-        </div>
-
+            </div>
+        </form>
     </div>
 </div>
 

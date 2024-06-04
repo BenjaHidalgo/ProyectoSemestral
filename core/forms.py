@@ -13,15 +13,7 @@ class EmpresaForm(forms.ModelForm):
     class Meta:
         model = Empresa
         fields = ['rut', 'razon_social', 'direccion', 'telefono', 'correo', 'sitio_web', 'tipo_servicio']
-        widgets = {
-            'rut': forms.TextInput(attrs={'required': True}),
-            'razon_social': forms.TextInput(attrs={'required': True}),
-            'direccion': forms.TextInput(attrs={'required': True}),  
-            'telefono': forms.TextInput(attrs={'required': True}), 
-            'correo': forms.TextInput(attrs={'required': True}), 
-            'sitio_web': forms.TextInput(attrs={'required': True}), 
-            'tipo_servicio': forms.TextInput(attrs={'required': True}), 
-        }
+       
 
 class ClienteForm(forms.ModelForm):
     class Meta:
