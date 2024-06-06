@@ -6,6 +6,5 @@ from .models import *
 
 
 admin.site.register(Orden)
-admin.site.register(Cliente)
-admin.site.register(Empresa)
+
 admin.site.register(Producto)

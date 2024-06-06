@@ -1,50 +1,80 @@
 from django.shortcuts import render, redirect
-from .forms import OrdenForm, EmpresaForm, ClienteForm, ProductoForm  # Importar el formulario de productos
+from .forms import * # Importar el formulario de productos
 from django.contrib.auth.decorators import login_required, user_passes_test
 from django.contrib.auth import authenticate, login
 from django.contrib import messages
+from .models import *
+from django.db.models import F, Sum
 
 # Create your views here.
 def index(request):
     return render(request, 'core/index.html')
 
-
 def orden(request):
     if request.method == 'POST':
-        orden_form = OrdenForm(request.POST)
-        empresa_form = EmpresaForm(request.POST)
-        cliente_form = ClienteForm(request.POST)
-        producto_form = ProductoForm(request.POST)
-        
-        if orden_form.is_valid() and empresa_form.is_valid() and cliente_form.is_valid() and producto_form.is_valid():
-            empresa = empresa_form.save()
-            cliente = cliente_form.save()
-            producto = producto_form.save()
+        formulario_orden = OrdenForm(request.POST)
 
-            # Primero guardamos la orden sin confirmarla para poder establecer las relaciones
-            orden = orden_form.save(commit=False)
-            orden.empresa = empresa
-            orden.cliente = cliente
-            # Para la relación ManyToMany con Producto, necesitamos guardar la orden primero
-            orden.save()
-            orden.productos.add(producto)
+        if formulario_orden.is_valid():
+            orden = formulario_orden.save(commit=False)
+            orden.save()  # Guardar la orden para obtener un ID
             
-            return redirect('core/index.html')  # Redirige al usuario a la página de éxito
-    else:
-        orden_form = OrdenForm()
-        empresa_form = EmpresaForm()
-        cliente_form = ClienteForm()
-        producto_form = ProductoForm()
+            # Obtener los productos asociados a la orden
+            productos_orden = orden.productos.all()
+            
+            subtotal = 0
+            
+            # Calcular el subtotal sumando el precio total de cada producto
+            for producto in productos_orden:
+                subtotal += producto.precio_unitario * producto.cantidad
+            
+            # Calcular el IVA y el total
+            iva = subtotal * 0.19
+            total = subtotal + iva
 
-    context = {
-        'orden_form': orden_form,
-        'empresa_form': empresa_form,
-        'cliente_form': cliente_form,
-        'producto_form': producto_form,
+            orden.iva = iva
+            orden.total = total
+
+            orden.save()  # Guardar la orden nuevamente con los valores actualizados
+            formulario_orden.save_m2m()
+
+            messages.success(request, "Orden creada correctamente")
+            return redirect('index')  
+        else:
+            messages.error(request, "Error al crear la orden")
+
+    else:
+        formulario_orden = OrdenForm()
+
+    aux = {
+        'form': formulario_orden,
+        'msj': ''
     }
-    return render(request, 'core/orden.html', context)
+    return render(request, 'core/orden.html', aux)
 
 
 
 def login(request):
     return render(request, 'core/login.html')
+
+def producto(request):
+    if request.method == 'POST':
+        formularioproducto = ProductoForm(request.POST)
+
+        if formularioproducto.is_valid():
+            # Asigna los IDs al formulario de orden
+            formularioproducto.save()
+
+            messages.success(request, "Producto creado correctamente")
+            return redirect('producto')  
+        else:
+            messages.error(request, "Error al crear la orden")
+
+    else:
+        formularioproducto = ProductoForm()
+
+    aux = {
+        'form': formularioproducto,
+        'msj': ''  # Inicializa la variable 'msj' con un valor vacío
+    }
+    return render(request, 'core/producto.html', aux)
+

@@ -5,7 +5,7 @@ urlpatterns = [
     path('index/', index, name="index"),
     path('orden/', orden, name='orden'),
     path('', login, name='login'),
-
+    path('producto', producto, name='producto'),
 
     
 ]
